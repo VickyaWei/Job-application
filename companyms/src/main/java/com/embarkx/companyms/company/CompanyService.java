@@ -19,5 +19,5 @@ public interface CompanyService {
 
      Company getCompanyById(Long id);
 
-    void updateCompanyRating(ReviewMessage reviewMessage);
+     void updateCompanyRating(ReviewMessage reviewMessage);
 }

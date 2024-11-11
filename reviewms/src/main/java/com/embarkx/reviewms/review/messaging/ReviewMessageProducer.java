@@ -15,8 +15,6 @@ public class ReviewMessageProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-
-
     public void sendMessage(Review review) {
         ReviewMessage reviewMessage = new ReviewMessage();
         reviewMessage.setId(review.getId());

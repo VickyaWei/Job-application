@@ -8,7 +8,9 @@ import com.embarkx.companyms.company.clients.ReviewClient;
 import com.embarkx.companyms.company.dto.ReviewMessage;
 import jakarta.ws.rs.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -74,8 +76,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void updateCompanyRating(ReviewMessage reviewMessage) {
         System.out.println(reviewMessage.getDescription());
-        Company company = companyRepository.findById(reviewMessage.getCompanyId()).
-                orElseThrow(() -> new NotFoundException("Company not found" + reviewMessage.getCompanyId()));
+        Company company = companyRepository.findById(reviewMessage.getCompanyId())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Company not found with id: " + reviewMessage.getCompanyId()
+                ));
         double averageRating = reviewClient.getAverageRatingForCompany(reviewMessage.getCompanyId());
         company.setRating(averageRating);
         companyRepository.save(company);
