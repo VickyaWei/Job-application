@@ -7,6 +7,7 @@ import com.embarkx.companyms.company.CompanyService;
 import com.embarkx.companyms.company.clients.ReviewClient;
 import com.embarkx.companyms.company.dto.ReviewMessage;
 import jakarta.ws.rs.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Optional;
  * @file CompanyServiceImpl
  */
 @Service
+@Slf4j
 public class CompanyServiceImpl implements CompanyService {
 
 

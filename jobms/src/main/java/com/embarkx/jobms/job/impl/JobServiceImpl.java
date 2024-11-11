@@ -33,8 +33,6 @@ public class JobServiceImpl implements JobService {
     // private List<Job> jobs = new ArrayList<>();
     JobRepository jobRepository;
 
-    @Autowired
-    RestTemplate restTemplate;
 
     private CompanyClient companyClient;
 
@@ -58,12 +56,10 @@ public class JobServiceImpl implements JobService {
     private JobDTO convertToDto(Job job) {
 
         Company company = companyClient.getCompany(job.getCompanyId());
-
         List<Review> reviews = reviewClient.getReviews(job.getCompanyId());
 
         JobDTO jobDTO = JobMapper.mapToJobWithCompanyDto(job, company, reviews);
 
-//        jobDTO.setCompany(company);
         return jobDTO;
 
     }

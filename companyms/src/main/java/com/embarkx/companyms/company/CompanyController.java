@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
+
     private CompanyService companyService;
 
     public CompanyController(CompanyService companyService) {
@@ -22,7 +23,7 @@ public class CompanyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Company>>  getAllCompanies(){
+    public ResponseEntity<List<Company>> getAllCompanies(){
         return new ResponseEntity<>(companyService.getAllCompanies(), HttpStatus.OK) ;
     }
 

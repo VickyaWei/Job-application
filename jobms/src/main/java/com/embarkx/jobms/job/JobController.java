@@ -1,5 +1,6 @@
 package com.embarkx.jobms.job;
 
+
 import com.embarkx.jobms.job.dto.JobDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/jobs")
 public class JobController {
+
 
     private JobService jobService;
 
@@ -52,7 +54,6 @@ public class JobController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    //@PutMapping("/jobs/{id}")
    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateJob(@PathVariable Long id, @RequestBody Job updatedJob) {
         boolean updated = jobService.updateJob(id, updatedJob);
